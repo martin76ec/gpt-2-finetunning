@@ -2,8 +2,6 @@ from functools import partial
 
 import torch
 
-from src.config.vars import DEVICE
-
 
 def custom_collate_draft_1(batch, pad_token_id=50256, device="cpu"):
     # Find the longest sequence in the batch
@@ -95,5 +93,5 @@ def custom_collate_fn(
 
 
 customized_collate_fn = partial(
-    custom_collate_fn, device=DEVICE, allowed_max_length=1024
+    custom_collate_fn, device="cpu", allowed_max_length=1024
 )
