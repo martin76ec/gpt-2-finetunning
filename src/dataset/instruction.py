@@ -1,3 +1,4 @@
+import tiktoken
 from torch.utils.data import Dataset
 
 
@@ -14,7 +15,8 @@ def format_input(entry):
 
 
 class InstructionDataset(Dataset):
-    def __init__(self, data, tokenizer):
+    def __init__(self, data, tokenizer=None):
+        self.tokenizer = self.__tokenizer_init__(tokenizer)
         self.data = data
 
         # Pre-tokenize texts
@@ -23,7 +25,13 @@ class InstructionDataset(Dataset):
             instruction_plus_input = format_input(entry)
             response_text = f"\n\n### Response:\n{entry['output']}"
             full_text = instruction_plus_input + response_text
-            self.encoded_texts.append(tokenizer.encode(full_text))
+            self.encoded_texts.append(self.tokenizer.encode(full_text))
+
+    def __tokenizer_init__(self, tokenizer):
+        if tokenizer == None:
+            return tiktoken.get_encoding("gpt2")
+
+        return tokenizer
 
     def __getitem__(self, index):
         return self.encoded_texts[index]
