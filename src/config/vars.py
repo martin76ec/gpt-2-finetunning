@@ -1,4 +1,7 @@
 NUM_WORKERS = 4
+NUM_EPOCHS = 5
+LR = 5e-5
+WD = 0.1
 
 BATCH_SIZE = 8
 
