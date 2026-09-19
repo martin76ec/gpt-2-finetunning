@@ -34,7 +34,7 @@ val_data = data[train_portion + test_portion :]
 
 
 def custom_collate_fn(
-    batch, pad_token_id=50256, ignore_index=-100, allowed_max_length=None, device="gpu"
+    batch, pad_token_id=50256, ignore_index=-100, allowed_max_length=None, device="cuda"
 ):
     # Find the longest sequence in the batch
     batch_max_length = max(len(item) + 1 for item in batch)
@@ -73,7 +73,7 @@ def custom_collate_fn(
 
 
 customized_collate_fn = partial(
-    custom_collate_fn, device="gpu", allowed_max_length=1024
+    custom_collate_fn, device="cuda", allowed_max_length=1024
 )
 
 train_dataset = InstructionDataset(train_data, tokenizer)
