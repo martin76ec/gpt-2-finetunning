@@ -1,7 +1,7 @@
 # GPT 2 Small
 
-[!NOTE]
-I did record the live process of this lab, check it at [youtube](https://youtu.be/_Z2A4Gl0N1Y)
+> [!NOTE]
+> I did record the live process of this lab, check it at [youtube](https://youtu.be/_Z2A4Gl0N1Y)
 
 ## Pre Requisites
 
