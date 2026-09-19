@@ -1,5 +1,5 @@
 run:
-	python src/models/mini_gpt.py
+	uv run python src/main.py
 
 play:
 	python .playground.py
