@@ -175,9 +175,3 @@ class GPTModel(nn.Module):
         x = self.final_norm(x)
         logits = self.out_head(x)
         return logits
-
-
-def model_get():
-    model = GPTModel(GPT_CONFIG_124M)
-    model.load_state_dict(torch.load("data/instruction-data.json", weights_only=True))
-    return model.eval()
