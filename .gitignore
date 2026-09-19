@@ -1,4 +1,4 @@
-data
+data/*.pth
 *.pdf
 .playground.py
 __pycache__
